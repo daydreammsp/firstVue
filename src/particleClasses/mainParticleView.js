@@ -6,18 +6,21 @@ import particle from './particle';
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
         // let p = new particle(width/2, height/3, Math.random() * 5 + 2, Math.random() * Math.PI * 2, 0.1);
-        let numParticles = 1;
-        let particles = [new particle(width/2, height/3, 0, 0, 0)];
-        
-        
+        let numParticles = 200;
+        //let particles = [new particle(width/2, height/3, 0, 0, 0)];
+        let particles = [];
+        for(let i = 0; i < numParticles; i++){
+            particles.push(new particle(width * Math.random() , height * Math.random() , 0, Math.random(),Math.random() * -0.0001));
+        }
+        //Math.random() * Math.PI * 2
         update();
         canvas.addEventListener("click", getPosition);
         function getPosition(event){
-            let rect = canvas.getBoundingClientRect();
+            let rect = canvas.getBoundingClientRect(width, height);
             let x = event.clientX - rect.left;
             let y = event.clientY - rect.top;
             // console.log(x,y)
-            particles.push( new particle(x,y, 0, 0, 0));
+            // particles.push( new particle(x,y, 0, 0, 0));
             if(particles.length > 1){
                 for(let i=0; i<particles.length; i++){
                     if(i != particles.length - 1){
@@ -40,9 +43,11 @@ import particle from './particle';
                 
                 
                 p.update();
-
+        
+      
                 context.beginPath();
                 context.arc(p.position.getX(), p.position.getY(), 10, 0, Math.PI * 2, false);
+                // context.fillStyle('white');
                 context.fill();
                 
             }
@@ -60,7 +65,7 @@ import particle from './particle';
             
             if (distance < 10 + 10) {
                 // collision detected!
-                alert('collision')
+                console.log('collision')
             }
         }
 }

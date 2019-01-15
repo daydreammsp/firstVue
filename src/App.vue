@@ -1,15 +1,17 @@
 <template>
   <div id="app">
-    <button v-on:click="getPosterInfo">submit request</button>
-    <FirstView msg1="my first message"></FirstView>
-    <MoviePoster msg2="poster view"/>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    
+    <FirstView></FirstView>
+    <button v-on:click="updateMessage">pick poster</button>
+    <button v-on:click="submitPay">submit payment</button>
+    <img v-bind:src="message"/>
+    <MoviePoster/>
+   
     
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import FirstView from './components/firstView.vue'
 import MoviePoster from './components/MoviePoster.vue'
 import axios from 'axios'
@@ -17,27 +19,77 @@ import axios from 'axios'
 export default {
   name: 'app',
   components: {
-    HelloWorld,
+    
     FirstView,
     MoviePoster,
   },
-  methods:{
+  data: function(){
+    return{
+message:  "http://image.tmdb.org/t/p/w185//81TGgmcObcfL6jcjPsU1n4n9THI.jpg",
 
-    getPosterInfo: ()=>{
-      console.log('clicked')
-      axios.get(' http://localhost:5000/api/movies')
+    }
+  },
+  methods:{
+    mounted: function(){
+      
+        
+    },
+    updated: function(){
+      
+    },
+    updateMessage: function () {
+      let poster;
+      axios.get('http://localhost:5000/api/movies')
       .then(response => {
-      // JSON responses are automatically parsed.
-      console.log(response.data) 
+      let num = Math.floor(Math.random() * Math.floor(20))
+       poster = ' http://image.tmdb.org/t/p/w185/' + response.data.results[num].poster_path
+    console.log(poster)
+    this.message = poster
+      
+      this.$nextTick(function () {
+        
+      })
     })
     .catch(e => {
-      // this.errors.push(e)
+      
+      console.log(e)
+    })
+
+      
+    },
+    getPosterInfo: ()=>{
+      
+      axios.get('http://localhost:5000/api/movies')
+      .then(response => {
+      let num = Math.floor(Math.random() * Math.floor(20))
+       
+   
+    console.log(response.data.results[num].poster_path)
+    })
+    .catch(e => {
+      
+      console.log(e)
+    })
+
+    },
+    submitPay: ()=>{
+      
+      axios.post('http://localhost:5000/api/square')
+      .then(response => {
+      
+       
+   
+    console.log(response.data)
+    })
+    .catch(e => {
+      
       console.log(e)
     })
 
     }
   }
 }
+// window.location.href = "http://siwei.me"
 </script>
 
 <style>

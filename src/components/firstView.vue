@@ -1,6 +1,5 @@
 <template>
   <div>
-      <h1>{{msg1}}</h1>
       <canvas id="canvas"></canvas>
       
       

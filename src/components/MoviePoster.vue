@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h1>{{msg2}}</h1>
+      <p>{{poster_path}}</p>
       
   </div>
 </template>
@@ -11,8 +11,11 @@
 export default {
   name: 'firstView',
   props: {
-    msg2: String
+    poster_path: String
   },
+  
+    
+   
 //   components: {
 //     ParticleFlow
 //   },

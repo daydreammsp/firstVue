@@ -15,7 +15,7 @@ router.post('/api/square', (req, res) => {
          Authorization: 'Bearer sandbox-sq0atb-ffNvoCsEpPIf8cJyXHELlw',
          'Content-Type': 'application/json' },
       body: 
-       { idempotency_key: '86ae1696-b1e3-4328-af6d-f1e04d947a23442989' + randomNum ,
+       { idempotency_key: '86ae1696-b1e3-4328-af6d-f1e04d947a23442' + randomNum ,
          order: 
           { reference_id: 'reference_id',
             line_items: 
@@ -33,7 +33,7 @@ router.post('/api/square', (req, res) => {
     request(options, function (error, response, body) {
       if (error) throw new Error(error);
     
-      console.log(body);
+      console.log(body.checkout.checkout_page_url);
       
     res.send(body.checkout.checkout_page_url)
     });
@@ -60,6 +60,7 @@ router.post('/api/square', (req, res) => {
           if (error) throw new Error(error);
         
           console.log(body);
+          res.send(body)
         });
 
     })
