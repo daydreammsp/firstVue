@@ -15,7 +15,6 @@ export default class particle{
         this.velocity.addTo(accel)
     }
     
-    
 
     update(){
         this.velocity.addTo(this.gravity);

@@ -1,11 +1,15 @@
 <template>
   <div id="app">
+   
+    <h2>Counter: {{ $store.state.count }} times, count is {{ evenOrOdd }}</h2>
+    <button class="btn btn-success" @click="increment">+</button>
+    <button class="btn btn-danger" @click="decrement">-</button>
+    <!-- <FirstView></FirstView> -->
+    <button v-on:click="getPosterPath">pick poster</button>
+    <!-- <button v-on:click="submitPay">submit payment</button> -->
+    <img v-bind:src="$store.state.posterPath"/>
     
-    <FirstView></FirstView>
-    <button v-on:click="updateMessage">pick poster</button>
-    <button v-on:click="submitPay">submit payment</button>
-    <img v-bind:src="message"/>
-    <MoviePoster/>
+    <!-- <MoviePoster/> -->
    
     
   </div>
@@ -14,10 +18,14 @@
 <script>
 import FirstView from './components/firstView.vue'
 import MoviePoster from './components/MoviePoster.vue'
+import { mapGetters, mapActions, mapMutations } from 'vuex'
 import axios from 'axios'
+
+
 
 export default {
   name: 'app',
+  
   components: {
     
     FirstView,
@@ -25,17 +33,35 @@ export default {
   },
   data: function(){
     return{
-message:  "http://image.tmdb.org/t/p/w185//81TGgmcObcfL6jcjPsU1n4n9THI.jpg",
+      message:  "http://image.tmdb.org/t/p/w185//81TGgmcObcfL6jcjPsU1n4n9THI.jpg",
+      
 
     }
   },
+  computed: mapGetters([
+    'evenOrOdd'
+  ]),
   methods:{
+    getPosterPath: function(){
+      this.$store.dispatch('getPosterPath')
+    },
+    increment: function(){
+      
+      this.$store.commit('increment')
+    },
+    decrement: function(){
+      
+      this.$store.commit('decrement')
+    },
     mounted: function(){
       
         
     },
     updated: function(){
       
+    },
+    computed: function(){
+
     },
     updateMessage: function () {
       let poster;
