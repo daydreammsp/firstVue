@@ -1,13 +1,24 @@
 <template>
   <div id="app">
-   
-    <h2>Counter: {{ $store.state.count }} times, count is {{ evenOrOdd }}</h2>
-    <button class="btn btn-success" @click="increment">+</button>
-    <button class="btn btn-danger" @click="decrement">-</button>
+    <p>
+    <!-- use router-link component for navigation. -->
+    <!-- specify the link by passing the `to` prop. -->
+    <!-- `<router-link>` will be rendered as an `<a>` tag by default -->
+    <router-link to="/foo">Go to Foo</router-link>
+    <router-link to="/bar">Go to Bar</router-link>
+  </p>
+  <!-- route outlet -->
+  <!-- component matched by the route will render here -->
+  <router-view></router-view>
+   <!-- <p>{{this.$route}}</p> -->
+
+    <!-- <h2>Counter: {{ $store.state.count }} times, count is {{ evenOrOdd }}</h2> -->
+    <!-- <button class="btn btn-success" @click="increment">+</button> -->
+    <!-- <button class="btn btn-danger" @click="decrement">-</button> -->
     <!-- <FirstView></FirstView> -->
-    <button v-on:click="getPosterPath">pick poster</button>
+    <!-- <button v-on:click="getPosterPath">pick poster</button> -->
     <!-- <button v-on:click="submitPay">submit payment</button> -->
-    <img v-bind:src="$store.state.posterPath"/>
+    <!-- <img v-bind:src="$store.state.posterPath"/> -->
     
     <!-- <MoviePoster/> -->
    
@@ -63,56 +74,56 @@ export default {
     computed: function(){
 
     },
-    updateMessage: function () {
-      let poster;
-      axios.get('http://localhost:5000/api/movies')
-      .then(response => {
-      let num = Math.floor(Math.random() * Math.floor(20))
-       poster = ' http://image.tmdb.org/t/p/w185/' + response.data.results[num].poster_path
-    console.log(poster)
-    this.message = poster
+    // updateMessage: function () {
+    //   let poster;
+    //   axios.get('http://localhost:5000/api/movies')
+    //   .then(response => {
+    //   let num = Math.floor(Math.random() * Math.floor(20))
+    //    poster = ' http://image.tmdb.org/t/p/w185/' + response.data.results[num].poster_path
+    // console.log(poster)
+    // this.message = poster
       
-      this.$nextTick(function () {
+    //   this.$nextTick(function () {
         
-      })
-    })
-    .catch(e => {
+    //   })
+    // })
+    // .catch(e => {
       
-      console.log(e)
-    })
+    //   console.log(e)
+    // })
 
       
-    },
-    getPosterInfo: ()=>{
+    // },
+    // getPosterInfo: ()=>{
       
-      axios.get('http://localhost:5000/api/movies')
-      .then(response => {
-      let num = Math.floor(Math.random() * Math.floor(20))
+    //   axios.get('http://localhost:5000/api/movies')
+    //   .then(response => {
+    //   let num = Math.floor(Math.random() * Math.floor(20))
        
    
-    console.log(response.data.results[num].poster_path)
-    })
-    .catch(e => {
+    // console.log(response.data.results[num].poster_path)
+    // })
+    // .catch(e => {
       
-      console.log(e)
-    })
+    //   console.log(e)
+    // })
 
-    },
-    submitPay: ()=>{
+    // },
+    // submitPay: ()=>{
       
-      axios.post('http://localhost:5000/api/square')
-      .then(response => {
+    //   axios.post('http://localhost:5000/api/square')
+    //   .then(response => {
       
        
    
-    console.log(response.data)
-    })
-    .catch(e => {
+    // console.log(response.data)
+    // })
+    // .catch(e => {
       
-      console.log(e)
-    })
+    //   console.log(e)
+    // })
 
-    }
+    // }
   }
 }
 // window.location.href = "http://siwei.me"

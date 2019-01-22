@@ -1,7 +1,7 @@
 <template>
   <div>
-      <canvas id="canvas"></canvas>
-      
+      <!-- <canvas id="canvas"></canvas> -->
+      <h2>first route</h2>
       
       
   </div>
