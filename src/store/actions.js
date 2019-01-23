@@ -6,9 +6,10 @@ const actions = {
         .then(response => {
         let num = Math.floor(Math.random() * Math.floor(20))
     
-        console.log(response.data.results[num].poster_path)
-        this.state.posterPath = ' http://image.tmdb.org/t/p/w185/' + response.data.results[num].poster_path
-        })
+        //'http://image.tmdb.org/t/p/w185/'
+        this.state.posterPath = response.data.results
+        console.log(this.state.posterPath)    
+    })
         .catch(e => {
         
         console.log(e)

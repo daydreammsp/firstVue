@@ -1,26 +1,12 @@
 <template>
   <div id="app">
     <p>
-    <!-- use router-link component for navigation. -->
-    <!-- specify the link by passing the `to` prop. -->
-    <!-- `<router-link>` will be rendered as an `<a>` tag by default -->
-    <router-link to="/foo">Go to Foo</router-link>
-    <router-link to="/bar">Go to Bar</router-link>
-  </p>
-  <!-- route outlet -->
-  <!-- component matched by the route will render here -->
-  <router-view></router-view>
-   <!-- <p>{{this.$route}}</p> -->
-
-    <!-- <h2>Counter: {{ $store.state.count }} times, count is {{ evenOrOdd }}</h2> -->
-    <!-- <button class="btn btn-success" @click="increment">+</button> -->
-    <!-- <button class="btn btn-danger" @click="decrement">-</button> -->
-    <!-- <FirstView></FirstView> -->
-    <!-- <button v-on:click="getPosterPath">pick poster</button> -->
-    <!-- <button v-on:click="submitPay">submit payment</button> -->
-    <!-- <img v-bind:src="$store.state.posterPath"/> -->
     
-    <!-- <MoviePoster/> -->
+    <router-link to="/foo">Go to Foo</router-link>
+    <!-- <router-link to="/bar">Go to Bar</router-link> -->
+  </p>
+  
+  <router-view></router-view>
    
     
   </div>
@@ -28,9 +14,9 @@
 
 <script>
 import FirstView from './components/firstView.vue'
-import MoviePoster from './components/MoviePoster.vue'
+// import MoviePoster from './components/MoviePoster.vue'
 import { mapGetters, mapActions, mapMutations } from 'vuex'
-import axios from 'axios'
+// import axios from 'axios'
 
 
 
@@ -40,7 +26,7 @@ export default {
   components: {
     
     FirstView,
-    MoviePoster,
+    // MoviePoster,
   },
   data: function(){
     return{
